@@ -1,0 +1,144 @@
+ng generate service hero
+
+
+ng generate component hero1
+hero1.component.html
+
+<p>hero1 works!</p>
+<div *ngIf="hero">
+    <h2>{{ hero.name }}</h2>
+    <p>{{ hero.power }}</p>
+  </div>
+
+
+hero1.component.ts
+
+
+import { Component, Injectable, OnInit } from '@angular/core';
+
+import { NgIf } from '@angular/common';
+import { HeroService } from '../hero.service';
+
+
+@Component({
+  selector: 'app-hero1',
+  standalone: true,
+  imports: [NgIf],
+  templateUrl: './hero1.component.html',
+  styleUrl: './hero1.component.css'
+})
+@Injectable({
+  providedIn: 'root' // Make the service available throughout the application
+})
+
+export class Hero1Component implements OnInit {
+
+  hero: any ;
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.hero = { name: 'James', power: 'Smith' }; // Create sample hero data
+    this.heroService.setHero(this.hero);  // Set the data in the service
+  
+  }
+
+}
+
+i/////////////////injectable problem//////////////////////
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+
+@Injectable({providedIn: 'root'})
+
+export class HeroService {
+
+  public heroSource = new BehaviorSubject<any>(null); // Use BehaviorSubject for initial data
+
+  currentHero$ = this.heroSource.asObservable();
+
+  constructor() { }
+
+  setHero(hero: any) {
+    this.heroSource.next(hero);
+  }  
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+ng generate component hero2
+
+
+hero2.component.html
+
+<div>
+  <h2>Hero 2</h2>
+  <ng-container *ngIf="hero">
+    <p>Name: {{ hero.name }}</p>
+    <p>Power: {{ hero.power }}</p>
+  </ng-container>
+  <p *ngIf="!hero">No hero data available</p>
+</div>
+
+
+hero2.component.ts
+
+import { Component, Injectable, OnInit } from '@angular/core';
+
+import { NgIf } from '@angular/common';
+import { HeroService } from '../hero.service';
+
+
+@Component({
+  selector: 'app-hero2',
+  standalone: true,
+  imports: [NgIf],
+  templateUrl: './hero2.component.html',
+  styleUrl: './hero2.component.css'
+})
+
+@Injectable({
+  providedIn: 'root' // Make the service available throughout the application
+})
+
+export class Hero2Component implements OnInit {
+
+  hero: any;
+
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.heroService.currentHero$.subscribe(hero => this.hero = hero);
+
+  }
+  // ngOnInit() {
+  //   this.hero = { name: 'Anita', power: 'Singh' }; // Create sample hero data
+  //   this.heroService.setHero(this.hero);  // Set the data in the service
+  // }
+}
+
+
+
+hero.service.ts
+
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+
+@Injectable({providedIn: 'root'})
+
+export class HeroService {
+
+  private heroSource = new BehaviorSubject<any>(null); // Use BehaviorSubject for initial data
+
+  currentHero$ = this.heroSource.asObservable();
+
+  constructor() { }
+
+  setHero(hero: any) {
+    this.heroSource.next(hero);
+  }  
+}
+
+not fetching one data to second component using service
+
+
+

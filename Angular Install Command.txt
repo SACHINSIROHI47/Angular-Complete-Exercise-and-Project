@@ -1,0 +1,115 @@
+https://nodejs.org/en/download
+First install Nodejs then with the help of npm we can install angular cli
+check the path is set or not
+if older npm so update this
+npm update -g 
+
+
+F:\Software\NodeJS Notes
+F:\Software\NodeJS Notes\ npm install -g @angular/cli
+or 
+if you want to install according to node version 
+F:\Software\NodeJS Notes\ npm i @angular/cli@14.0.0-next.2
+F:\Software\NodeJS Notes\ng version
+F:\Software\NodeJS Notes\ng new aptech
+click on css by up arrow key then press enter installation is start
+F:\Software\NodeJS Notes\code .
+press enter 
+use for open with VScode 
+F:\Software\NodeJS Notes\cd Aptech
+F:\Software\NodeJS Notes\Aptech\ng serve
+use for install node module
+after then open web browser 
+http://localhost:4200/
+
+F:\Software\NodeJS Notes\Aptech\ng help
+open new terminal in vs then type into vs code and create component (component is a small thing)
+
+F:\Software\NodeJS Notes\Aptech\ng generate component login
+in short
+F:\Software\NodeJS Notes\Aptech\ng g c login
+F:\Software\NodeJS Notes\Aptech\clear
+use when you want to clear terminal
+screen
+*****create module----
+F:\Software\NodeJS Notes\Aptech\ng generate module user-auth
+in sort
+F:\Software\NodeJS Notes\Aptech\ng g m user-auth
+(module is a big thing)
+
+***create component inside module****
+F:\Software\NodeJS Notes\Aptech\ng g c user-auth/sign-in
+
+create class if need****
+F:\Software\NodeJS Notes\Aptech> ng generate class dummy
+
+create interface***
+F:\Software\NodeJS Notes\Aptech> ng generate interface dummyinterface
+
+create build for deployment****
+F:\Software\NodeJS Notes\Aptech>ng build
+
+
+******or if fail to install anular*******
+ng update @angular/cli @angular/core
+npm install --save @ng-bootstrap/ng-bootstrap
+
+****add bootstrap library component component*******
+https://ng-bootstrap.github.io/#/components/carousel/examples
+
+***---Add custom directive---****
+ng g directive redEl
+
+if we are using vs code enter the below below code for open
+so enter-> code . 
+
+
+hackrank---------
+npm install --save-dev @angular-devkit/build-angular
+
+
+*****Add Bootstrap in Angular****
+first stop angular running file
+F:\Software\NodeJS Notes\Aptech>ng add @ng-bootstrap/ng-bootstrap
+
+#-----------add material ui-------------
+ng add @angular/material
+
+
+#-----add core ui in angular------------
+npm install -g @angular/cli
+npm install @coreui/angular
+npm install @coreui/icons
+npm install @coreui/icons-angular
+
+
+
+import {MatGridListModule} from '@angular/material/grid-list';
+
+<mat-grid-list cols="3" rowHeight="100%">
+  <mat-grid-tile>1</mat-grid-tile>
+
+</mat-grid-list>
+
+
+
+#--------Authguard------------------
+ng new myauthguard
+cd myauthguard
+ng g service services/auth
+ng g guard guards/auth
+
+
+#Angular Single Page Application using routing----------
+ng new angular-router-sample
+cd angular-router-sample
+ng generate component crisis-list
+ng generate component heroes-list
+ng serve
+
+
+
+
+
+
+
